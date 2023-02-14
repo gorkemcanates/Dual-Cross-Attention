@@ -44,7 +44,6 @@ class Parameters:
         self.DEBUG = False
         self.TRANSFORM = True
         self.SHUFFLE = True
-        self.DISTRIBUTED = False
         self.NUM_WORKERS = 0
         self.CUDA_COUNT = torch.cuda.device_count()
 
