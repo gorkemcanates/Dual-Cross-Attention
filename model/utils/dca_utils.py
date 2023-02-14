@@ -51,20 +51,19 @@ class depthwise_projection(nn.Module):
                 groups,
                 kernel_size=(1, 1), 
                 padding=(0, 0), 
-                norm=False, 
+                norm_type=None, 
                 activation=False, 
                 pointwise=False) -> None:
         super().__init__()
-        self.norm = norm
-        self.activation = activation
+
         self.proj = depthwise_conv_block(in_features=in_features, 
                                         out_features=out_features, 
                                         kernel_size=kernel_size,
                                         padding=padding,
                                         groups=groups,
                                         pointwise=pointwise, 
-                                        norm_type=None,
-                                        activation=False)
+                                        norm_type=norm_type,
+                                        activation=activation)
                             
     def forward(self, x):
         P = int(x.shape[1] ** 0.5)
