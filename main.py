@@ -1,11 +1,7 @@
 __author__ = "Gorkem Can Ates"
 __email__ = "gca45@miami.edu"
 
-device = 'cpu'
-
 import os
-if device == 'cpu':
-    os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 import torch
 from torch.optim import Adam
 from trainer.trainer import MainTrainer
@@ -26,17 +22,13 @@ import warnings
 warnings.filterwarnings("ignore")
 
 class Parameters:
-    def __init__(self, experiment, device, file):
+    def __init__(self, experiment, file):
         self.experiment = experiment
-        self.DEVICE = device
+        self.DEVICE = 'cuda'
         self.file = file
         self.load_file = 'unet_f/'
-        if self.DEVICE == 'cuda':
-            self.train_data_dir = '/scratch/idlcdp/IBMTumorSegmentation/Dataset/' + self.experiment + 'images/'
-            self.train_mask_dir = '/scratch/idlcdp/IBMTumorSegmentation/Dataset/' + self.experiment + 'masks/'
-        else:
-            self.train_data_dir = '/Users/gorkemcanates/code/PythonProjects/Data/' + self.experiment + 'images/'
-            self.train_mask_dir = '/Users/gorkemcanates/code/PythonProjects/Data/' + self.experiment + 'masks/'
+        self.train_data_dir = 'Dataset/' + self.experiment + 'images/'
+        self.train_mask_dir = 'Dataset/' + self.experiment + 'masks/'
         self.LOGDIR = f'runs/' + self.experiment + self.file
         self.FIG_PATH = 'RESULTS/' + self.experiment + self.file + 'images/'
         self.result_SAVEPATH = 'RESULTS/' + self.experiment + self.file + 'metrics/'
@@ -54,7 +46,6 @@ class Parameters:
         self.SHUFFLE = True
         self.DISTRIBUTED = False
         self.NUM_WORKERS = 0
-        # self.CUDA_COUNT = 1
         self.CUDA_COUNT = torch.cuda.device_count()
 
 class HyperParameters:
@@ -120,7 +111,6 @@ class MAIN:
     def __init__(self, experiment, model, attention, file, n, ca, sa):
 
         self.params = Parameters(experiment=experiment, 
-                                 device=device, 
                                  file=file)
 
         self.hyperparams = HyperParameters(experiment=experiment, 
