@@ -19,8 +19,8 @@ class DATASET:
                  mask_path,
                  train_transform,
                  val_transform,
-                 experiment='SYNAPS/',
-                 num_classes=3,
+                 experiment='GlaS/',
+                 num_classes=1,
                  shape=(512, 512),
                  shuffle=True,
                  debug=False, 
@@ -143,25 +143,6 @@ class DATASET:
                                     transform=self.train_transform
                                     )
             self.test_dataset = MoNuSeg(image_dir=test_im_dir,
-                                    mask_dir=test_mask_dir,
-                                    num_classes=num_classes,
-                                    shape=shape,
-                                    transform=self.val_transform
-            )
-        elif experiment == 'ISIC/':
-            train_im_dir = im_path + 'train_images'
-            test_im_dir = im_path + 'test_images'
-            train_mask_dir = mask_path + 'train_masks'
-            test_mask_dir = mask_path + 'test_masks'
-
-                            
-            self.train_dataset = ISIC(image_dir=test_im_dir,
-                                    mask_dir=test_mask_dir,
-                                    num_classes=num_classes,
-                                    shape=shape,
-                                    transform=self.train_transform
-                                    )
-            self.test_dataset = ISIC(image_dir=test_im_dir,
                                     mask_dir=test_mask_dir,
                                     num_classes=num_classes,
                                     shape=shape,
