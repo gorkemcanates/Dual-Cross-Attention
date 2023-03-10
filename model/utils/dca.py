@@ -155,8 +155,8 @@ class DCA(nn.Module):
                 channel_att=True,
                 spatial_att=True,   
                 n=1,              
-                channel_head=[4, 4, 4, 4], 
-                spatial_head=[1, 1, 1, 1], 
+                channel_head=[1, 1, 1, 1], 
+                spatial_head=[4, 4, 4, 4], 
                 ):
         super().__init__()
         self.n = n
