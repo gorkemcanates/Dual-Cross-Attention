@@ -89,13 +89,7 @@ class HyperParameters:
             self.IN_CHANNELS = 3
             self.NUM_CLASSES = 1 
             self.TRAIN_BATCH_SIZE = 4
-            self.TEST_BATCH_SIZE = 14            
-        elif experiment == 'ISIC/':
-            self.TRANSFORM_MODE = 'torch'
-            self.IN_CHANNELS = 3
-            self.NUM_CLASSES = 1 
-            self.TRAIN_BATCH_SIZE = 16
-            self.TEST_BATCH_SIZE = 20            
+            self.TEST_BATCH_SIZE = 14                       
         elif experiment == 'CVC/':
             self.TRANSFORM_MODE = 'torch'
             self.IN_CHANNELS = 3
