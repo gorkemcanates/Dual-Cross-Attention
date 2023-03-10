@@ -165,7 +165,7 @@ class DCA(nn.Module):
         self.channel_head = channel_head
         self.channel_att = channel_att
         self.spatial_att = spatial_att
-        self.patch_size = patch_size
+        self.patch = patch
         self.patch_avg = nn.ModuleList([PoolEmbedding(
                                                     pooling = nn.AdaptiveAvgPool2d,            
                                                     patch=patch, 
@@ -220,7 +220,7 @@ class DCA(nn.Module):
         return [xi + xj for xi, xj in zip(x, y)]  
         
     def reshape(self, x):
-        return einops.rearrange(x, 'B (H W) C-> B C H W', H=self.patch_size) 
+        return einops.rearrange(x, 'B (H W) C-> B C H W', H=self.patch) 
 
 
 
