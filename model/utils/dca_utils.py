@@ -94,7 +94,7 @@ class PatchEmbedding(nn.Module):
                 in_features,
                 out_features,
                 size,
-                patch_size=28,
+                patch=28,
                 proj='conv'
                 ) -> None:
         super().__init__()
@@ -116,10 +116,10 @@ class PatchEmbedding(nn.Module):
 class PoolEmbedding(nn.Module):
     def __init__(self,
                 pooling,
-                patch_size,
+                patch,
                 ) -> None:
         super().__init__()
-        self.projection = pooling(output_size=(patch_size, patch_size))
+        self.projection = pooling(output_size=(patch, patch))
 
     def forward(self, x):
         x = self.projection(x)
