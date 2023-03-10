@@ -151,7 +151,7 @@ class DCA(nn.Module):
     def __init__(self,
                 features,
                 strides,
-                patch_size=28,
+                patch=28,
                 channel_att=True,
                 spatial_att=True,   
                 n=1,              
@@ -168,7 +168,7 @@ class DCA(nn.Module):
         self.patch_size = patch_size
         self.patch_avg = nn.ModuleList([PoolEmbedding(
                                                     pooling = nn.AdaptiveAvgPool2d,            
-                                                    patch_size=patch_size, 
+                                                    patch=patch, 
                                                     )
                                                     for _ in features])                
         self.avg_map = nn.ModuleList([depthwise_projection(in_features=feature,
