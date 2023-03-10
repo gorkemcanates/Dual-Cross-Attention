@@ -98,16 +98,8 @@ class PatchEmbedding(nn.Module):
                 proj='conv'
                 ) -> None:
         super().__init__()
-        if proj == 'depthwise':
-            self.projection = nn.Conv2d(in_channels=in_features, 
-                                        out_channels=out_features, 
-                                        kernel_size=size // patch_size, 
-                                        stride=size // patch_size, 
-                                        padding=(0, 0),
-                                        groups=out_features 
-                                        )
-        else:
-
+        self.proj = proj
+        if self.proj == 'conv':
             self.projection = nn.Conv2d(in_channels=in_features, 
                                         out_channels=out_features, 
                                         kernel_size=size // patch_size, 
@@ -115,7 +107,6 @@ class PatchEmbedding(nn.Module):
                                         padding=(0, 0), 
                                         )
         
-        # self.norm = nn.LayerNorm(out_features, eps=1e-6)                                                  
     def forward(self, x):
         x = self.projection(x) 
         x = x.flatten(2).transpose(1, 2)      
@@ -155,10 +146,7 @@ class ScaleDotProduct(nn.Module):
                                                     
     def forward(self, x1, x2, x3, scale):
         x2 = x2.transpose(-2, -1)
-
         x12 = torch.einsum('bhcw, bhwk -> bhck', x1, x2) * scale
-        att12 = self.softmax(x12)
-    
-        x123 = torch.einsum('bhcw, bhwk -> bhck', att12, x3) 
-        
+        att = self.softmax(x12)
+        x123 = torch.einsum('bhcw, bhwk -> bhck', att, x3) 
         return x123
