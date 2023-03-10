@@ -120,7 +120,7 @@ class MultiResUnet(nn.Module):
             torch.cuda.set_enabled_lms(True)
 
         self.attention = attention    
-        patch_size = input_size[0] // patch_size_ratio
+        patch = input_size[0] // patch_size
 
         alpha = 1.67
         k = 1
