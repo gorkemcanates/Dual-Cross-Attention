@@ -57,11 +57,11 @@ class HyperParameters:
         self.FILTER_COEFF = 0.5
         self.ATTENTION = attention
         if model.__name__ == 'ResUnetPlus':
-            self.PATCH_SIZE_RATIO = 4
+            self.PATCH_SIZE = 4
             self.CHANNEL_HEAD_DIM = [1, 1, 1]
             self.SPATIAL_HEAD_DIM = [4, 4, 4]
         else:
-            self.PATCH_SIZE_RATIO = 8
+            self.PATCH_SIZE = 8
             self.CHANNEL_HEAD_DIM = [1, 1, 1, 1]
             self.SPATIAL_HEAD_DIM = [4, 4, 4, 4]            
         self.METRIC_CONDITION = 'max'
@@ -123,7 +123,7 @@ class MAIN:
                             out_features=self.hyperparams.NUM_CLASSES,
                             k=self.hyperparams.FILTER_COEFF,
                             input_size=self.hyperparams.RESIZE_SHAPE, 
-                            patch_size_ratio=self.hyperparams.PATCH_SIZE_RATIO,
+                            patch_size=self.hyperparams.PATCH_SIZE,
                             spatial_att=sa,
                             channel_att=ca,
                             spatial_head_dim=self.hyperparams.SPATIAL_HEAD_DIM,
