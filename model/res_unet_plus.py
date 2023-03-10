@@ -16,11 +16,11 @@ class ResUnetPlus(nn.Module):
                 k=0.5,
                 input_size=(512, 512),
                 fusion_out=None,
-                patch_size_ratio=8,
+                patch_size=4,
                 spatial_att=True,
                 channel_att=True,
-                spatial_head_dim=8,
-                channel_head_dim=8, 
+                spatial_head_dim=[4, 4, 4],
+                channel_head_dim=[1, 1, 1], 
                 device='cuda', 
                 ) -> None:
         super().__init__()
@@ -28,7 +28,7 @@ class ResUnetPlus(nn.Module):
             torch.cuda.set_enabled_lms(True)
 
         self.attention = attention    
-        patch_size = input_size[0] // patch_size_ratio
+        patch = input_size[0] // patch_size
 
         self.input_layer = nn.Sequential(
             conv_block(in_features=in_features,
@@ -74,8 +74,8 @@ class ResUnetPlus(nn.Module):
         if self.attention:
             self.DCA = DCA(n=n,                                            
                                 features = [int(64 * k), int(128 * k), int(256 * k)],                                                                                                              
-                                strides=[patch_size_ratio, patch_size_ratio // 2, patch_size_ratio // 4],
-                                patch_size=patch_size,
+                                strides=[patch_size, patch_size // 2, patch_size // 4],
+                                patch=patch,
                                 spatial_att=spatial_att,
                                 channel_att=channel_att, 
                                 spatial_head=spatial_head_dim,
