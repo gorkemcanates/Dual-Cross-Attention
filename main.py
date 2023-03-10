@@ -213,93 +213,117 @@ class MAIN:
 
 
 if __name__ == '__main__':
+    seed = 666
+    deterministic = True
+    if not deterministic:
+        cudnn.benchmark = True
+        cudnn.deterministic = False
+    else:
+        cudnn.benchmark = False
+        cudnn.deterministic = True
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+
     experiments = [
                     'GlaS/',
-                    # 'MoNuSeg/',
-                    # 'CVC/', 
-                    # 'Kvasir/',
-                    # 'SYNAPS/',
-                    # 'ISIC/'
+                    'MoNuSeg/',
+                    'CVC/', 
+                    'Kvasir/',
+                    'SYNAPS/',
                     ]
 
     models = [
-                # Unet,
-                # Unet,        
-                # ResUnetPlus, 
-                # ResUnetPlus, 
+                Unet,
+                Unet,        
+                ResUnetPlus, 
+                ResUnetPlus, 
                 MultiResUnet,
                 MultiResUnet,                   
-                # R2Unet, 
-                # R2Unet,
-                # Vnet, 
-                # Vnet,
-                # DoubleUnet,
-                # DoubleUnet
+                R2Unet, 
+                R2Unet,
+                Vnet, 
+                Vnet,
+                DoubleUnet,
+                DoubleUnet
 
               ]
 
     files = [
-                # 'unet_200/',
-                # 'unet_f/',
-                'm_resunet_f_c/',
-                'm_resunet_f_s/',
-                # 'unet_f_sc/',
-                # 'resunetplus_200/',
-                # 'resunetplus_f/',
-                # 'm_resunet_200/',
-                # 'm_resunet_f/',
-                # 'r2unet_200/',
-                # 'r2unet_f/',
-                # 'vnet_200/',
-                # 'vnet_f2/',
-                # 'dunet_200/',
-                # 'dunet_f2/',
+                'unet/',
+                'unet_dca/',
+                'resunetplus/',
+                'resunetplus_dca/',
+                'mresunet/',
+                'mresunet_dca/',
+                'r2unet/',
+                'r2unet_dca/',
+                'vnet/',
+                'vnet_dca/',
+                'dunet/',
+                'dunet_dca/',
 
                 
 
               ]
     attentions = [
-                # False, 
-                # True,
-                # False, 
-                # True,
-                # False, 
-                # True,
-                # False, 
-                # True,
-                # False, 
-                # True,
-                # False, 
-                # True,
+                False, 
                 True,
+                False, 
                 True,
-                # True,
-                # True,
-                # True,
+                False, 
+                True,
+                False, 
+                True,
+                False, 
+                True,
+                False, 
+                True,
             ]
+
     ca = [
-              True,
-              False,
-              ]
+                False, 
+                True,
+                False, 
+                True,
+                False, 
+                True,
+                False, 
+                True,
+                False, 
+                True,
+                False, 
+                True,            
+            ]
     sa = [
-              False,
-              True
+                False, 
+                True,
+                False, 
+                True,
+                False, 
+                True,
+                False, 
+                True,
+                False, 
+                True,
+                False, 
+                True,
               ]
     ns=[
-            # 1,
-            # 1, 
-            # 1, 
-            # 1,
-            # 1, 
-            # 1, 
-            # 1,
-            # 1, 
-            # 1, 
-            # 1,
+            1,
             1, 
             1, 
-            # 3, 
-            # 4,
+            1,
+            1, 
+            1, 
+            1,
+            1, 
+            1, 
+            1,
+            1, 
+            1, 
             ]
 
     for exp in experiments:
