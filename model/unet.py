@@ -17,8 +17,8 @@ class Unet(nn.Module):
                 patch_size=8,
                 spatial_att=True,
                 channel_att=True,
-                spatial_head_dim=8,
-                channel_head_dim=8, 
+                spatial_head_dim=[4, 4, 4, 4],
+                channel_head_dim=[1, 1, 1, 1],
                 device='cuda', 
                 ) -> None:
         super().__init__()
