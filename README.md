@@ -9,7 +9,7 @@ We propose Dual Cross-Attention (DCA), a simple yet effective attention module t
 
 
 
-|                    | Params | GlaS   |        | MoNuSeg |        | CVC-ClinicDB |        | Kvasir-Seg |        | SYNAPSE |        |
+|                    | Params |      GlaS       | MoNuSeg |        | CVC-ClinicDB |        | Kvasir-Seg |        | SYNAPSE |        |
 |--------------------|--------|--------|--------|---------|--------|--------------|--------|------------|--------|---------|--------|
 |                    |        | DSC    | IoU    | DSC     | IoU    | DSC          | IoU    | DSC        | IoU    | DSC     | IoU    |
 | U-net              | 8.64M  | 0.8887 | 0.7998 | 0.7714  | 0.6279 | 0.8963       | 0.8143 | 0.8299     | 0.7101 | 0.7855  | 0.6737 |
