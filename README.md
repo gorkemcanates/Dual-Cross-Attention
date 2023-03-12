@@ -7,7 +7,9 @@ Official Pytorch implementation of the paper [Dual-Cross-Attention for Medical I
 
 We propose Dual Cross-Attention (DCA), a simple yet effective attention module that is able to enhance skip-connections in U-Net-based architectures for medical image segmentation. Our proposed module addresses the semantic gap between encoder and decoder features by sequentially capturing channel and spatial dependencies across multi-scale encoder features.
 
+# Benchmark Results
 
+We test our method on [GlaS](https://warwick.ac.uk/fac/cross_fac/tia/data/glascontest), [MoNuSeg](https://monuseg.grand-challenge.org/Data/), [Kvasir-Seg](https://datasets.simula.no/kvasir-seg/), [CVC-ClinicDB](https://www.kaggle.com/datasets/balraj98/cvcclinicdb) and [Synapse](https://www.synapse.org/#!Synapse:syn3193805/wiki/217789) datasets.
 
 |                    | Params | GlaS   | GlaS   | MoNuSeg | MoNuSeg| CVC-ClinicDB |CVC-ClinicDB| Kvasir-Seg | Kvasir-Seg | SYNAPSE |SYNAPSE |
 |--------------------|--------|--------|--------|---------|--------|--------------|------------|------------|------------|---------|--------|
