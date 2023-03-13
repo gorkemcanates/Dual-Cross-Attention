@@ -225,22 +225,6 @@ class MainTrainer:
                       ):
         return self.criterion(preds, target)
 
-    def adjust_lr(self,
-                  epoch,
-                  case='ImageNet'):
-
-        if case == 'ImageNet':
-            lr = self.hyperparams.LEARNING_RATE * (0.1 ** (epoch // 30))
-        elif case == 'CIFAR':
-            if epoch >=100:
-                lr = self.hyperparams.LEARNING_RATE * (0.1 ** (epoch // 50 - 1))
-            else:
-                lr = self.hyperparams.LEARNING_RATE
-        else:
-            lr = self.hyperparams.LEARNING_RATE
-        for param in self.optimizer.param_groups:
-            param['lr'] = lr
-
     def evaluate(self,
                  preds,
                  C=3,
