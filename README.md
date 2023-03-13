@@ -11,7 +11,7 @@ We propose Dual Cross-Attention (DCA), a simple yet effective attention module t
 
 We test our method on [GlaS](https://warwick.ac.uk/fac/cross_fac/tia/data/glascontest), [MoNuSeg](https://monuseg.grand-challenge.org/Data/), [Kvasir-Seg](https://datasets.simula.no/kvasir-seg/), [CVC-ClinicDB](https://www.kaggle.com/datasets/balraj98/cvcclinicdb) and [Synapse](https://www.synapse.org/#!Synapse:syn3193805/wiki/217789) datasets.
 
-|                    | Params | GlaS   | GlaS   | MoNuSeg | MoNuSeg| CVC-ClinicDB |CVC-ClinicDB| Kvasir-Seg | Kvasir-Seg | SYNAPSE |SYNAPSE |
+|                    | Params | GlaS   | GlaS   | MoNuSeg | MoNuSeg| CVC-ClinicDB |CVC-ClinicDB| Kvasir-Seg | Kvasir-Seg | Synapse |Synapse |
 |--------------------|--------|--------|--------|---------|--------|--------------|------------|------------|------------|---------|--------|
 |                    |        | DSC    | IoU    | DSC     | IoU    | DSC          | IoU        | DSC        | IoU        | DSC     | IoU    |
 | U-net              | 8.64M  | 0.8887 | 0.7998 | 0.7714  | 0.6279 | 0.8963       | 0.8143     | 0.8299     | 0.7101     | 0.7855  | 0.6737 |
