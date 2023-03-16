@@ -17,9 +17,6 @@ from Dataset.Datasets import DATASET
 from transforms.transforms import Transforms
 from writer.writer import TensorboardWriter
 import time
-import warnings
-
-warnings.filterwarnings("ignore")
 
 class Parameters:
     def __init__(self, experiment, file):
