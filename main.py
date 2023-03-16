@@ -55,6 +55,7 @@ class HyperParameters:
         self.BETA2 = 0.999
         self.RESIZE_SHAPE = (224, 224)
         self.FILTER_COEFF = 0.5
+        self.NUM_BLOCKS = 1
         self.ATTENTION = attention
         if model.__name__ == 'ResUnetPlus':
             self.PATCH_SIZE = 4
@@ -101,7 +102,7 @@ class HyperParameters:
 
 
 class MAIN:
-    def __init__(self, experiment, model, attention, file, n, ca, sa):
+    def __init__(self, experiment, model, attention, file, ca, sa):
 
         self.params = Parameters(experiment=experiment, 
                                  file=file)
@@ -112,7 +113,7 @@ class MAIN:
 
         self.model = model(
                             attention=self.hyperparams.ATTENTION,
-                            n=n,
+                            n=self.hyperparams.NUM_BLOCKS,
                             in_features=self.hyperparams.IN_CHANNELS if model.__name__ != 'DoubleUnet' else 3, 
                             out_features=self.hyperparams.NUM_CLASSES,
                             k=self.hyperparams.FILTER_COEFF,
@@ -311,28 +312,13 @@ if __name__ == '__main__':
                 False, 
                 True,
               ]
-    ns=[
-            1,
-            1, 
-            1, 
-            1,
-            1, 
-            1, 
-            1,
-            1, 
-            1, 
-            1,
-            1, 
-            1, 
-            ]
 
     for exp in experiments:
-        for model, file, attention, n, c, s in zip(models, files, attentions, ns, ca, sa):
+        for model, file, attention, c, s in zip(models, files, attentions, ca, sa):
             trainer = MAIN(experiment=exp, 
                           model=model, 
                           attention=attention, 
                           file=file, 
-                          n=n,
                           ca=c, 
                           sa=s
                           )
