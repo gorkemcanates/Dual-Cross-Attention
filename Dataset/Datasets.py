@@ -268,42 +268,6 @@ class MoNuSeg(Dataset):
     def __len__(self):
         return len(self.im_list)
 
-class ISIC(Dataset):
-    def __init__(self,
-                 image_dir,
-                 mask_dir,
-                 num_classes,
-                 shape=(512, 512),
-                 transform=None,
-                 ):
-        self.im_dir = image_dir
-        self.mask_dir = mask_dir
-        self.transforms = transform
-        self.num_classes = num_classes
-        self.shape = shape
-        self.ToTensor = transforms.ToTensor()
-        self.im_list = os.listdir(self.im_dir)
-        random.shuffle(self.im_list)
-
-    def __getitem__(self, item):
-        img_path = os.path.join(self.im_dir, self.im_list[item])
-        mask_path = os.path.join(self.mask_dir, self.im_list[item].replace('.jpg', '_segmentation.png'))
-        image = Image.open(img_path)
-        mask = Image.open(mask_path).convert("L")
-
-        if self.transforms is not None:
-            image, mask = self.transforms(image, mask)
-            image = np.array(image)
-            mask = np.array(mask, dtype=np.float32)
-            image, mask = self.ToTensor(image), self.ToTensor(mask)
-            mask[mask > self.num_classes] = self.num_classes
-            mask[mask < 0] = 0
-        return image, mask.long()
-
-
-    def __len__(self):
-        return len(self.im_list)
-
 class Kvasir(Dataset):
     def __init__(self,
                  image_dir,
