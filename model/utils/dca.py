@@ -89,9 +89,8 @@ class CCSABlock(nn.Module):
         self.channel_att = channel_att
         self.spatial_att = spatial_att
         if self.channel_att:
-            self.channel_norm = nn.ModuleList([nn.Sequential(nn.LayerNorm(in_features,
-                                                    eps=1e-6 
-                                                    ))
+            self.channel_norm = nn.ModuleList([nn.LayerNorm(in_features,
+                                                    eps=1e-6) 
                                                     for in_features in features])   
 
             self.c_attention = nn.ModuleList([ChannelAttention(
@@ -100,10 +99,9 @@ class CCSABlock(nn.Module):
                                                 n_heads=head, 
                                         ) for feature, head in zip(features, channel_head)])
         if self.spatial_att:
-            self.spatial_norm = nn.ModuleList([nn.Sequential(nn.LayerNorm(in_features,
-                                                    eps=1e-6 
-                                                    ))                                                   
-                                                    for in_features in features])           
+            self.spatial_norm = nn.ModuleList([nn.LayerNorm(in_features,
+                                                    eps=1e-6) 
+                                                    for in_features in features])          
           
             self.s_attention = nn.ModuleList([SpatialAttention(
                                                     in_features=sum(features),
