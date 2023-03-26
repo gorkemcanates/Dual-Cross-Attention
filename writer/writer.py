@@ -1,3 +1,6 @@
+__author__ = "Gorkem Can Ates"
+__email__ = "gca45@miami.edu"
+
 import os
 import torch
 from torch.utils.tensorboard import SummaryWriter
