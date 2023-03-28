@@ -1,10 +1,3 @@
-# --------------------------------------------------------
-# Dual Cross Attention
-# Copyright (c) 2023 Gorkem Can Ates
-# Licensed under The MIT License [see LICENSE for details]
-# Written by Gorkem Can Ates (gca45@miami.edu)
-# --------------------------------------------------------
-
 import torch
 import torch.nn as nn
 from model.utils.main_blocks import rrcnn_block, Upconv, params
