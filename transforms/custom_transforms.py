@@ -1,5 +1,10 @@
-__author__ = "Gorkem Can Ates"
-__email__ = "gca45@miami.edu"
+# --------------------------------------------------------
+# Dual Cross Attention
+# Copyright (c) 2023 Gorkem Can Ates
+# Licensed under The MIT License [see LICENSE for details]
+# Written by Gorkem Can Ates (gca45@miami.edu)
+# --------------------------------------------------------
+
 
 
 from PIL import Image
