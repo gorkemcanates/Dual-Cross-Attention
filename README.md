@@ -30,14 +30,17 @@ We test our method on [GlaS](https://warwick.ac.uk/fac/cross_fac/tia/data/glasco
 # Citations
 If you find this repo useful, please cite:
 
-copy(`@misc{ates2023dual,
+```
+@misc{ates2023dual,
       title={Dual Cross-Attention for Medical Image Segmentation}, 
       author={Gorkem Can Ates and Prasoon Mohan and Emrah Celik},
       year={2023},
       eprint={2303.17696},
       archivePrefix={arXiv},
       primaryClass={eess.IV}
-}`)
+}
+```
+
 
 
 # Contact
