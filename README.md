@@ -27,4 +27,20 @@ We test our method on [GlaS](https://warwick.ac.uk/fac/cross_fac/tia/data/glasco
 | DoubleUnet         | 29.68M | 0.8907 | 0.8030 | 0.7716  | 0.6282 | 0.9020       | 0.8235     | 0.8440     | 0.7308     | 0.7976  | 0.6931 |
 | DoubleUnet (DCA)   | 30.68M | 0.8990 | 0.8168 | 0.7950  | 0.6597 | 0.9086       | 0.8347     | 0.8516     | 0.7434     | 0.8022  | 0.6980 |
 
+# Citations
+If you find this repo useful, please cite:
+
+@misc{ates2023dual,
+      title={Dual Cross-Attention for Medical Image Segmentation}, 
+      author={Gorkem Can Ates and Prasoon Mohan and Emrah Celik},
+      year={2023},
+      eprint={2303.17696},
+      archivePrefix={arXiv},
+      primaryClass={eess.IV}
+}
+
+
+# Contact
+Gorkem Can Ates (g.canates@gmail.com)
+
 
